@@ -24,3 +24,7 @@ They will check the app before heading out so they can make a better decision re
 
  
 ![alt text](http://res.cloudinary.com/dturasbjb/image/upload/v1493126156/Screen_Shot_2017-04-25_at_10.59.31_PM_irmnqp.png)
+
+## Final ERD
+
+![alt text](http://res.cloudinary.com/dturasbjb/image/upload/v1493126998/erd_fctmk6.png)
