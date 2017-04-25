@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  resources :messages
+  resources :conversations
   get 'locations/new'
 
   get 'locations/directions'
 
   resources :admin
 
+  resources :conversations do
+     end
 
   resources :suppliers
   resources :locations
