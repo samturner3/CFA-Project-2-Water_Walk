@@ -1,0 +1,11 @@
+<h1>Editing Resource</h1>
+<p>@resource.location.supplier.user.id <br>
+<%= @resource.location.supplier.user %>
+</p>
+<% if current_user.admin? %>
+<%= render 'form', resource: @resource %>
+<% else %>
+Not authorized
+<% end %>
+<%= link_to 'Show', @resource %> |
+<%= link_to 'Back', resources_path %>

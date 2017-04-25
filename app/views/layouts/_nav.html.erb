@@ -1,0 +1,23 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Water Walk</a>
+      <!-- <img class="navbar-left" alt="Logo" src="/assets/LambLogoTextHorz.png" style="height: 50px" /> -->
+      <%#=link_to cl_image_tag("LambLogoTextHorz_jro4vz.png"), root_path, class: "navbar-left logo-img"%>
+
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="<%= 'active' if params[:controller] == 'locations' %>"><%= link_to "Home", root_path %></li>
+      <li class="<%= 'active' if params[:controller] == 'suppliers' %>"><%= link_to "Suppliers", suppliers_path %></li>
+      <li class="<%= 'active' if params[:controller] == 'resources' %>"><%= link_to "Resources", resources_path %></li>
+
+      <% if current_user.admin? %>
+        <li class="<%= 'active' if params[:controller] == 'admin' %>"><%= link_to 'Admin', admin_index_url %></li>
+      <% end %>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= render 'layouts/login_items' %></li>
+      <li><%= render 'layouts/registration_items' %></li>
+    </ul>
+  </div>
+</nav>

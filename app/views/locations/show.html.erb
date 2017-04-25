@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @location.lat %>
+</p>
+
+<p>
+  <strong>Long:</strong>
+  <%= @location.long %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @location.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @location.address %>
+</p>
+
+<p>
+  <strong>3words:</strong>
+  <%= @location.three_words %>
+</p>
+
+<p>
+  <strong>supplier:</strong>
+  <%= @location.supplier.name if @location.supplier %>
+</p>
+
+<img src="<%= @location.supplier.avatar.url %>" alt="" height="100px">
+
+<h1><%= @location.name  %></h1>
+<h4><%= @location.address %></h4>
+
+<img src="<%=@img_tag%>" alt="">
+
+<div class="panel panel-default">
+  <h3>Resources at this location<h3>
+<table class="table">
+  <tr>
+    <th width="60%">Type</th>
+    <th width="10%">Stock</th>
+    <th width="10%"></th>
+  </tr>
+  <% for resource in @location.resources %>
+    <tr>
+      <td><%= resource.type_of %></td>
+      <td><%= resource.stock %></td>
+      <td><%= resource.units %></td>
+    </tr>
+  <% end %>
+</table>
+</div>
+
+<p><%= link_to "New Resource for #{@location.name}", "/resources/new?location=#{@location.id}", class: "btn btn-default" %></p>
+<p><%= link_to "Navigate", class: "btn btn-default" %></p>
+
+
+<%= link_to 'Edit', edit_location_path(@location) %> |
+<%= link_to 'Back', locations_path %>

@@ -1,0 +1,42 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Resources</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Location</th>
+      <th>Supplier</th>
+      <th></th>
+      <th>Type</th>
+      <th>Stock</th>
+      <th>Units</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @resources.each do |resource| %>
+      <tr>
+        <td><%= resource.location.name %></td>
+        <td><%= resource.location.supplier.name %></td>
+        <td><img src="<%= resource.location.supplier.avatar.url %>" alt="<%= resource.location.supplier.name%>" height="30px">
+          </td>
+        <td><%= resource.type_of %></td>
+        <td><%= resource.stock %></td>
+        <td><%= resource.units %></td>
+        <td><%= link_to 'Show', resource %></td>
+        <% if policy(resource).edit? %>
+        <td><%= link_to 'Edit', edit_resource_path(resource) %></td>
+        <% end %>
+        <% if policy(resource).destroy? %>
+        <td><%= link_to 'Destroy', resource, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+Add new resources via locations

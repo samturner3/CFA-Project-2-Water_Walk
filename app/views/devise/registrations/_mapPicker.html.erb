@@ -1,0 +1,148 @@
+<%= javascript_include_tag('W3W.Geocoder.min.js') %>
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Pick your location with google maps</div>
+  <div class="panel-body">
+  <div class="form-horizontal" style="width: 550px">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Address:</label>
+
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="us3-address" />
+        </div>
+    </div>
+    <div id="us3" style="width: 550px; height: 400px;"></div>
+    <div class="clearfix">&nbsp;</div>
+    <div class="m-t-small">
+        <label class="p-r-small col-sm-1 control-label">Lat.:</label>
+
+        <div class="col-sm-3">
+            <input type="text" class="form-control" style="width: 110px" id="us0-lat" />
+        </div>
+        <label class="p-r-small col-sm-2 control-label">Long.:</label>
+
+        <div class="col-sm-3">
+            <input type="text" class="form-control" style="width: 110px" id="us0-lon" />
+        </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+</div>
+<div class="panel panel-primary">
+  <div class="panel-heading">Pick with what 3 words</div>
+  <div class="panel-body">
+  </div>
+</div>
+  <script>
+            $('#us3').locationpicker({
+                location: {
+                    latitude: document.getElementById('user_lat').value,
+                    longitude: document.getElementById('user_long').value
+
+                },
+                radius: 0,
+                zoom: 5,
+                mapTypeId: 'hybrid',
+                inputBinding: {
+                    latitudeInput: $('#user_lat'),
+                    longitudeInput: $('#user_long'),
+                    radiusInput: $('#us3-radius'),
+                    locationNameInput: $('#us3-address')
+                },
+                enableAutocomplete: true,
+                onchanged: function (currentLocation, radius, isMarkerDropped) {
+                    // Uncomment line below to show alert on each Location Changed event
+                    //alert("Location changed. New location (" + currentLocation.latitude + ", " + currentLocation.longitude + ")");
+                }
+            });
+              ///WHAT 3 WORDS API Control
+            var w3w;
+            var options =  {
+              key: WHAT3WORDS_KEY,
+              lang: 'en'
+            };
+            w3w = new W3W.Geocoder(options);
+
+            var callbackHandlerForward = {
+                onSuccess: function(data) {
+                    console.log(JSON.stringify(data));
+
+                    var latResult = data["geometry"]["lat"]
+                      // console.log(JSON.stringify(result));
+
+                      var lngResult = data["geometry"]["lng"]
+                        // console.log(JSON.stringify(result));
+
+
+                    document.getElementById('user_lat').value=latResult
+                    document.getElementById('user_long').value=lngResult
+                },
+                onFailure: function(data) {
+                    console.log(JSON.stringify(data));
+                    window.alert("API Failed");
+                }
+              };
+
+              var callbackHandlerReverse = {
+                  onSuccess: function(data) {
+                  console.log(data["words"]);
+                  document.getElementById('location_three_words').value=data["words"]
+                  },
+                  onFailure: function(data) {
+                      console.log(JSON.stringify(data));
+                      window.alert("API Failed");
+                  }
+                };
+
+              // var params = {
+              //     addr: 'index.home.raft'
+              // };
+
+              function toWords() {
+              // window.alert(params);
+              //{"addr":"index.home.raft"}
+              // var words = document.getElementById("location_three_words").value
+              //coords: [51.521251, -0.203586]
+              // var lat =
+              var lat = Number(document.getElementById('user_lat').value)
+              var long = Number(document.getElementById('user_long').value)
+              console.log(typeof lat)
+              console.log(typeof long)
+              var params = {
+                  coords: [lat, long]
+                  // coords: [51.521251, -0.203586]
+              };
+
+              console.log(params);
+              // console.log(params["coords"][0]);
+
+              // var (params["coords"]);
+              // console.log(params["coords"][0]);
+              //
+              // var prams2 = {
+              //   (params["coords"][0]),(params["coords"][1])
+              // }
+
+
+              // console.log(prams2);
+              // params = (JSON.stringify(params).replace(/['"]+/g, ''));
+              // console.log(params);
+              // params2 = JSON.parse(params)
+              // console.log(params2);
+              w3w.reverse(params, callbackHandlerReverse);
+            }
+
+            function toLatLong() {
+            // window.alert(params);
+            //{"addr":"index.home.raft"}
+            // var words = document.getElementById("location_three_words").value
+            var params = {
+                addr: document.getElementById("location_three_words").value
+            };
+            console.log(JSON.stringify(params));
+            w3w.forward(params, callbackHandlerForward);
+          }
+
+
+        </script>

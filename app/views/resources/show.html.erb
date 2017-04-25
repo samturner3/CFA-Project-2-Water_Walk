@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @resource.type_of %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @resource.stock %>
+</p>
+
+<p>
+  <strong>Units:</strong>
+  <%= @resource.units %>
+</p>
+
+<%= link_to 'Edit', edit_resource_path(@resource) %> |
+<%= link_to 'Back', resources_path %>

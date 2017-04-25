@@ -1,0 +1,10 @@
+<h1>Editing Location</h1>
+
+<% if current_user.admin? %>
+<%= render 'form', resource: @resource %>
+<% else %>
+Not authorized
+<% end %>
+
+<%= link_to 'Show', @location %> |
+<%= link_to 'Back', locations_path %>
