@@ -11,18 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
+
+
+
+  <div class="field form-group">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-  <%= f.label :avatar %><br>
+  <div class="field form-group">
+  <%= f.label :Logo %>
   <%= f.file_field :avatar %>
 </div>
 
-<div class="field">
-  <%= f.label :user %>
+<div class="field form-group">
+  <%= f.label :User %>
   <%= f.select(:user) do %>
     <% User.all.each do |u| %>
       <%= content_tag(:option, u.email, value: u.id) %>
@@ -35,4 +39,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+    </div>
 <% end %>

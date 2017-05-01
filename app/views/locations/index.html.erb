@@ -37,12 +37,16 @@
 </table>
 
 <br>
+<div>
+<%= link_to 'New Location', new_location_path, :class => 'btn btn-primary' %>
+</div>
+<br>
 
 <div style='width: 800px;'>
   <div id="map" style='width: 800px; height: 400px;'></div>
 </div>
 
 
-<%= link_to 'New Location', new_location_path %>
+
 
 <%= render 'locations/javascript' %>

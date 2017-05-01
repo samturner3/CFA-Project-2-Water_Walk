@@ -37,7 +37,11 @@
     <%= f.label :supplier %>
     <%= f.select(:supplier_id) do %>
       <% Supplier.all.each do |c| %>
+      <% if @location.supplier %>
+        <%= content_tag(:option, c.name, value: c.id, :selected => @location.supplier.id) %>
+        <% else %>
         <%= content_tag(:option, c.name, value: c.id) %>
+        <% end %>
         <% end %>
       <% end %>
   </div>

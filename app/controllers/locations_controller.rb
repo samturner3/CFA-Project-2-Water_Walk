@@ -72,7 +72,7 @@ class LocationsController < ApplicationController
         require 'google_maps_service'
             # More complex setup
         gmaps = GoogleMapsService::Client.new(
-            key: GoogleMapsService_key,
+            key: 'AIzaSyBpFpQYDNzVHKt0Kdi4jiQQQDEgKZtI8TU',
             retry_timeout: 20,      # Timeout for retrying failed request
             queries_per_second: 10  # Limit total request per second
         )
@@ -98,7 +98,7 @@ class LocationsController < ApplicationController
         require 'google_maps_service'
             # More complex setup
         gmaps = GoogleMapsService::Client.new(
-            key: GoogleMapsService_key,
+            key: 'AIzaSyBpFpQYDNzVHKt0Kdi4jiQQQDEgKZtI8TU',
             retry_timeout: 20,      # Timeout for retrying failed request
             queries_per_second: 10  # Limit total request per second
         )
@@ -133,7 +133,7 @@ class LocationsController < ApplicationController
     require 'google_maps_service'
         # More complex setup
     gmaps = GoogleMapsService::Client.new(
-        key: GoogleMapsService_key,
+        key: 'AIzaSyBpFpQYDNzVHKt0Kdi4jiQQQDEgKZtI8TU',
         retry_timeout: 20,      # Timeout for retrying failed request
         queries_per_second: 10  # Limit total request per second
     )

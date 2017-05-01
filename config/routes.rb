@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
-  resources :messages
-  resources :conversations
+
   get 'locations/new'
 
   get 'locations/directions'
 
   resources :admin
 
-  resources :conversations do
-     end
+
 
   resources :suppliers
   resources :locations
   resources :resources
 
-  resources :users
+  # resources :users
 
   # resources :admin
   devise_for :users, controllers: {
