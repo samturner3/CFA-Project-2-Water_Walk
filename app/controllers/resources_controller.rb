@@ -28,6 +28,7 @@ class ResourcesController < ApplicationController
 
     respond_to do |format|
       if @resource.save
+        UserMailer.new_resource_notification(@resource).deliver
         format.html { redirect_to @resource, notice: 'Resource was successfully created.' }
         format.json { render :show, status: :created, location: @resource }
       else

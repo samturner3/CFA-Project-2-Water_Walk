@@ -1,0 +1,11 @@
+<h1>New resource added to system</h1>
+
+Hi,
+
+Just letting you know:
+<p>
+  <%= @resourceMail.stock %> <%= @resourceMail.units %> of <%= @resourceMail.type_of %> has been added to the system in location <%= @resourceMail.location.name %>.
+</p>
+<p>
+  To view, please login and visit http://localhost:3000/resources/<%= @resourceMail.id %>.
+</p>
